@@ -119,9 +119,10 @@ classdef DeltaRobot< handle
                 xbase = [this.Joint.Pos{i}, this.Joint.Pos{i} + 20 * this.Joint.Dir{i}(:, 1)];
                 ybase = [this.Joint.Pos{i}, this.Joint.Pos{i} + 20 * this.Joint.Dir{i}(:, 2)];
                 zbase = [this.Joint.Pos{i}, this.Joint.Pos{i} + 20 * this.Joint.Dir{i}(:, 3)];
-                plot3(xbase(1, :), xbase(2, :), xbase(3, :), 'g', 'linewidth', 2); hold on
-                plot3(ybase(1, :), ybase(2, :), ybase(3, :), 'b', 'linewidth', 2); hold on
-                plot3(zbase(1, :), zbase(2, :), zbase(3, :), 'r', 'linewidth', 2); hold on
+                plot3(xbase(1, :), xbase(2, :), xbase(3, :), 'k', 'linewidth', 2); hold on
+                plot3(ybase(1, :), ybase(2, :), ybase(3, :), 'k', 'linewidth', 2); hold on
+                plot3(zbase(1, :), zbase(2, :), zbase(3, :), 'k', 'linewidth', 2); hold on
+            %  gbr
             end
 
             plot3([0, this.Joint.Pos{1}(1)], ...
@@ -139,31 +140,31 @@ classdef DeltaRobot< handle
 
             % R : ZYX
             % link 0 
-            x = [-0.25, 0, 0];
-            this.Link_RT([-90, 0, 0], [-3.5, 0, 11.61] + x, 0);
+            this.Link_RT([-90, 0, 0], [-3.7500, 0, 11.61], 0);
             this.temp_Draw(0, [255, 0, 0]);
+            plot3(0, 0, max(this.Link_rot{1}.Points(:, 3)), '-k*','MarkerSize',12)
             
             % link 1
-            this.Link_RT([180, 0, 0], [0.8676, 0, 33.4482] + x, 1);
+            this.Link_RT([180, 0, 0], [0.4842, 0, 33.4482], 1);
             this.Rot(1, Angle(1), [0, 0, 1], [0, 0, 0]')
             this.temp_Draw(1, [0, 255, 0]);
             
             % link 2
-            this.Link_RT([90, 0, 90], [2.6000, 0, 54.2793] + x, 2);
+            this.Link_RT([90, 0, 90], [2.2166, 0, 54.4517], 2);
             this.Rot(2, Angle(1), [0, 0, 1], [0, 0, 0]');
             this.Rot(2, Angle(2), this.Joint.Dir{1}(:, 3), this.Joint.Pos{1});
             this.temp_Draw(2, [255, 0, 0]);
             
             % R : ZXY
             % link 3
-            this.Link_RT([180, -90, 90], [5.1000, 0, 74.1100] + x, 3);
+            this.Link_RT([180, -90, 90], [6.0214, 0, 73.5457], 3);
             this.Rot(3, Angle(1), [0, 0, 1], [0, 0, 0]');
             this.Rot(3, Angle(2), this.Joint.Dir{1}(:, 3), this.Joint.Pos{1});
             this.Rot(3, Angle(3), this.Joint.Dir{2}(:, 3), this.Joint.Pos{2});
             this.temp_Draw(3, [0, 255, 0]);
             
             % link 4
-            this.Link_RT([90, 0, 90], [28.0406, 0, 76.6100] + x, 4);
+            this.Link_RT([90, 0, 90], [28.8959, 0, 76.1113], 4);
             this.Rot(4, Angle(1), [0, 0, 1], [0, 0, 0]');
             this.Rot(4, Angle(2), this.Joint.Dir{1}(:, 3), this.Joint.Pos{1});
             this.Rot(4, Angle(3), this.Joint.Dir{2}(:, 3), this.Joint.Pos{2});
@@ -172,7 +173,7 @@ classdef DeltaRobot< handle
             
             % R : ZYX
             % link 5
-            this.Link_RT([90, 180, 90], [37.6000, -0.5000, 76.6100] + x, 5);
+            this.Link_RT([90, 180, 90], [38.4049, -0.5000, 75.4671], 5);
             this.Rot(5, Angle(1), [0, 0, 1], [0, 0, 0]');
             this.Rot(5, Angle(2), this.Joint.Dir{1}(:, 3), this.Joint.Pos{1});
             this.Rot(5, Angle(3), this.Joint.Dir{2}(:, 3), this.Joint.Pos{2});
@@ -182,7 +183,7 @@ classdef DeltaRobot< handle
             
             % R : ZXY
             % link 6
-            this.Link_RT([0, -90, 180], [43.4167, 0, 76.6100] + x, 6);
+            this.Link_RT([0, -90, 180], [43.7008, 0, 75.5090], 6);
             this.Rot(6, Angle(1), [0, 0, 1], [0, 0, 0]');
             this.Rot(6, Angle(2), this.Joint.Dir{1}(:, 3), this.Joint.Pos{1});
             this.Rot(6, Angle(3), this.Joint.Dir{2}(:, 3), this.Joint.Pos{2});

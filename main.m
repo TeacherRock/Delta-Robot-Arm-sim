@@ -22,7 +22,7 @@ thetadeg_lim = rad2deg(theta_lim);
 % end
 
 %%
-for j = 1 : 8
+for j = 4 : 4
     p = [];
     pic_num = 1;
     figure(j)
